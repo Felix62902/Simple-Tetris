@@ -138,7 +138,9 @@ public class PlayManager {
                     for(int i = staticBlocks.size()-1; i>-1; i--){
                         if(staticBlocks.get(i).y == y){
                             staticBlocks.remove(i);
+
                         }
+                        GamePanel.se.play(1,false);
                     }
 
                     lineCount++;
@@ -181,6 +183,8 @@ public class PlayManager {
         //if Mino does not move from starting position, it means there is no space left so Game over true
         if(currentMino.b[0].x == MINO_START_X && currentMino.b[0].y == MINO_START_Y){
             gameOver = true;
+            GamePanel.music.stop();
+            GamePanel.se.play(2,false);
         }
     }
 

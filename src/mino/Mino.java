@@ -1,4 +1,5 @@
 package mino;
+import main.GamePanel;
 import main.KeyHandler;
 import main.PlayManager;
 
@@ -78,6 +79,7 @@ public class Mino {
         for(int i = 0; i < b.length; i++){
             if (b[i].y + Block.SIZE == PlayManager.bottom_y){
                 bottomCollision = true;
+
             }
         }
 
@@ -162,6 +164,7 @@ public class Mino {
                 case 4: getDirection1(); break;
             }
             KeyHandler.upPressed = false;
+            GamePanel.se.play(3,false);
         }
 
         //before handling left right down movement, check if Mino is touching Wall
@@ -205,7 +208,10 @@ public class Mino {
 
         if(bottomCollision){
             //if mino hits bottom, stop it from moving down
-           deactivating();
+            if(deactivating == false) {
+                GamePanel.se.play(4,false);
+            }
+           deactivating = true;
 
         } else{
             //counter increases in every frame

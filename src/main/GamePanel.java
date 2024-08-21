@@ -12,6 +12,8 @@ public class GamePanel extends JPanel implements Runnable{
     final int FPS = 60;
     Thread gameThread; // to run gameLoop ( must use Runnable interface)
     public PlayManager pm;
+    public static Sound music = new Sound();
+    public static Sound se = new Sound();
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -26,6 +28,8 @@ public class GamePanel extends JPanel implements Runnable{
     public void launchGame() {
         gameThread = new Thread(this);
         gameThread.start(); // start automatically calls the run method
+        music.play(0,true);
+        music.loop();
     }
 
     //Game Loop, in every game loop, we do two things, update and draw
